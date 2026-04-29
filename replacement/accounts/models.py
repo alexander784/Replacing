@@ -45,6 +45,15 @@ class User(AbstractUser):
     @property
     def is_admin_user(self):
         return self.role == 'admin'
+    
+class StudentProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
+    full_name = models.CharField(max_length=150)
+    course = models.CharField(max_length=100)
+    year_of_study = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=15, blank=True)
 
+    def __str__(self):
+        return self.full_name
     
         
