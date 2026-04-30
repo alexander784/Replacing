@@ -24,10 +24,9 @@ class StudentRegisterView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         user = serializer.save()
-        # Automatically create StudentProfile after registration
         StudentProfile.objects.create(
             user=user,
-            full_name="",      # Student will update later
+            full_name="",   
             course="",
             year_of_study=""
         )
@@ -77,4 +76,3 @@ class StudentProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user.student_profile
-    

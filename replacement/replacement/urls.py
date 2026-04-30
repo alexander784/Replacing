@@ -19,5 +19,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('auth/', include('accounts.urls')),
-    path('', include('replacements.urls')),
+    path('', include('id_replace.urls')),
 ]

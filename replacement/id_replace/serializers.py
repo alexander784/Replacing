@@ -16,7 +16,6 @@ class IDReplacementCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ['student', 'status']
 
     def validate(self, attrs):
-        # Auto-fill student info if not provided
         request = self.context['request']
         if not attrs.get('full_name'):
             attrs['full_name'] = request.user.student_profile.full_name

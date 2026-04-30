@@ -9,13 +9,11 @@ from .views import (
 )
 
 urlpatterns = [
-    # Student URLs
-    path('replacements/', StudentReplacementListCreate.as_view(), name='student-replacements'),
-    path('replacements/<int:pk>/', StudentReplacementDetail.as_view(), name='student-replacement-detail'),
+    path('id_replace/', StudentReplacementListCreate.as_view(), name='id_replace'),
+    path('id_replace/<int:pk>/', StudentReplacementDetail.as_view(), name='id_replace-detail'),
 
-    # Admin URLs
-    path('admin/replacements/', AdminReplacementList.as_view(), name='admin-replacements-list'),
-    path('admin/replacements/<int:pk>/', AdminReplacementDetail.as_view(), name='admin-replacement-detail'),
-    path('admin/replacements/<int:pk>/approve/', ApproveReplacementView.as_view(), name='approve-replacement'),
-    path('admin/replacements/<int:pk>/reject/', RejectReplacementView.as_view(), name='reject-replacement'),
+    path('admin/id_replace/', AdminReplacementList.as_view(), name='id_replace-list'),
+    path('admin/id_replace/<int:pk>/', AdminReplacementDetail.as_view(), name='id_replace-detail'),
+    path('admin/id_replace/<int:pk>/approve/', ApproveReplacementView.as_view(), name='approve-replacement'),
+    path('admin/id_replace/<int:pk>/reject/', RejectReplacementView.as_view(), name='reject-replacement'),
 ]
