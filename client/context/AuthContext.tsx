@@ -2,7 +2,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import api from '@/lib/axios';
+// import api from '@/lib/axios';
 import { User, AuthContextType, RegisterData } from '@/types/auth';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
