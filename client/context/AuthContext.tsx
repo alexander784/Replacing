@@ -1,8 +1,7 @@
-// context/AuthContext.tsx
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-// import api from '@/lib/axios';
+import api from '@/lib/axios';
 import { User, AuthContextType, RegisterData } from '@/types/auth';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -45,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const register = async (data: RegisterData) => {
-    await api.post('http://localhost:8000/auth/register', data);
+    await api.post('/auth/register/', data);
   };
 
   const logout = () => {
