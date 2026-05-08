@@ -31,7 +31,7 @@ export default function HomePage() {
         </p>
 
         <Link
-          href="/dashboard"
+          href="/auth/login"
           className="bg-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:bg-blue-700 transition"
         >
           Request Replacement
