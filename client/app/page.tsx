@@ -4,24 +4,6 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-blue-700">
-            Id Replace
-          </h1>
-
-          <div className="space-x-4">
-            <Link href="/auth/login/" className="text-sm font-medium text-gray-600 hover:text-blue-600">
-              Login
-            </Link>
-            <Link href="/auth/register/" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">
-              Register
-            </Link>
-          </div>
-        </div>
-      </header>
-
       <section className="max-w-7xl mx-auto px-6 py-16 text-center">
         <h2 className="text-4xl font-bold mb-4">
           Lost Your Student ID?
