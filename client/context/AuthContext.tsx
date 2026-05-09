@@ -35,12 +35,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const login = async (email: string, password: string) => {
     const res = await api.post('http://localhost:8000/auth/login/', { email, password });
     
+     console.log("Correct");
+
     const { access, refresh, user: userData } = res.data;
+    console.log("user data", userData);
 
     localStorage.setItem('accessToken', access);
     localStorage.setItem('refreshToken', refresh);
     
     setUser(userData);
+    console.log("steps 4")
+
+    return (userData);
   };
 
   const register = async (data: RegisterData) => {
