@@ -35,7 +35,7 @@ export interface IDReplacementCreate {
 }
 
 export interface AdminReplacementDetail extends IDReplacement {
-  student: number;           // Student user ID
+  student: number;          
   rejection_reason?: string;
 }
 
@@ -47,3 +47,21 @@ export interface ReplacementListResponse {
 }
 
 export type ReplacementStatus = 'pending' | 'approved' | 'rejected';
+
+export const ReplacementStatusConfig = {
+  pending: {
+    label: 'Pending',
+    color: 'text-yellow-700',
+    bgColor: 'bg-yellow-100',
+  },
+  approved: {
+    label: 'Approved',
+    color: 'text-green-700',
+    bgColor: 'bg-green-100',
+  },
+  rejected: {
+    label: 'Rejected',
+    color: 'text-red-700',
+    bgColor: 'bg-red-100',
+  },
+};
