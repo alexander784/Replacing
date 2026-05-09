@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import api from '@/lib/axios';
 import { IDReplacement,ReplacementStatusConfig } from '@/types/replace';
-// import { IDReplacement, ReplacementStatusConfig } from '@/types';
 
 export default function AdminReplacements() {
   const [requests, setRequests] = useState<IDReplacement[]>([]);
