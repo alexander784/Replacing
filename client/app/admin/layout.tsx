@@ -19,20 +19,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b border-gray-200 px-8 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold text-black">Admin Portal</h1>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <span className="text-sm text-gray-600">{user?.email}</span>
-            <a href="/auth/logout" className="text-red-600 hover:underline text-sm font-medium">
-              Logout
-            </a>
-          </div>
-        </div>
-      </nav>
 
       <div className="flex">
         <div className="w-64 bg-white border-r border-gray-200 min-h-[calc(100vh-73px)] p-6">

@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
 
       try {
-        const res = await api.get('http://localhost:8000/auth/profile/');
+        const res = await api.get('http://localhost:8000/admin/auth/profile/');
         setUser(res.data);
       } catch (error) {
         localStorage.removeItem('accessToken');
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     setUser(null);
-    window.location.href = '/login';
+    window.location.href = '/auth/login';
   };
 
   return (

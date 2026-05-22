@@ -11,7 +11,7 @@ export default function MyReplacements() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await api.get('/replacement/');
+        const res = await api.get('id_replace/');
         setRequests(res.data);
       } catch (error) {
         console.error(error);
@@ -19,14 +19,13 @@ export default function MyReplacements() {
         setLoading(false);
       }
     };
-
     fetchRequests();
   }, []);
 
-  const getStatusColor = (status: string) => {
-    if (status === 'approved') return 'bg-green-100 text-green-700 border-green-200';
-    if (status === 'rejected') return 'bg-red-100 text-red-700 border-red-200';
-    return 'bg-yellow-100 text-yellow-700 border-yellow-200';
+  const getStatusStyle = (status: string) => {
+    if (status === 'approved') return 'bg-green-50 text-green-700 border border-green-200';
+    if (status === 'rejected') return 'bg-red-50 text-red-600 border border-red-200';
+    return 'bg-[#f5f4f0] text-[#8a7a5a] border border-[#d4cfc3]';
   };
 
   const stats = {
@@ -37,93 +36,93 @@ export default function MyReplacements() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 text-white p-6">
-      
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">ID Replacement Dashboard</h1>
-          <p className="text-blue-200 text-sm mt-1">
-            Track and manage all your replacement requests
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#f5f4f0] p-6 md:p-10">
 
-        <Link
-          href="/student/replacement/new"
-          className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-xl font-medium shadow-lg"
-        >
-          + New Request
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-blue-800/40 rounded-2xl p-4 border border-blue-700">
-          <p className="text-sm text-blue-200">Total</p>
-          <p className="text-2xl font-bold">{stats.total}</p>
-        </div>
-
-        <div className="bg-green-800/20 rounded-2xl p-4 border border-green-700">
-          <p className="text-sm text-green-300">Approved</p>
-          <p className="text-2xl font-bold">{stats.approved}</p>
-        </div>
-
-        <div className="bg-yellow-800/20 rounded-2xl p-4 border border-yellow-700">
-          <p className="text-sm text-yellow-300">Pending</p>
-          <p className="text-2xl font-bold">{stats.pending}</p>
-        </div>
-
-        <div className="bg-red-800/20 rounded-2xl p-4 border border-red-700">
-          <p className="text-sm text-red-300">Rejected</p>
-          <p className="text-2xl font-bold">{stats.rejected}</p>
-        </div>
-      </div>
-
-      {loading ? (
-        <div className="text-center py-20 text-blue-200">
-          Loading requests...
-        </div>
-      ) : requests.length === 0 ? (
-        <div className="text-center py-20 bg-blue-900/40 border border-blue-800 rounded-3xl">
-          <p className="text-lg text-blue-200">
-            You have no replacement requests yet.
-          </p>
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-10">
+          <div>
+            <div className="w-8 h-[2px] bg-[#e8c97e] mb-4" />
+            <p className="text-[#8a7a5a] text-xs tracking-[0.22em] uppercase font-serif mb-2">
+              Student Portal
+            </p>
+            <h1 className="text-3xl font-normal font-serif text-[#1a1a2e]">
+              ID Replacement Dashboard
+            </h1>
+            <p className="text-[#9090a8] text-sm font-serif mt-1">
+              Track and manage all your replacement requests
+            </p>
+          </div>
 
           <Link
             href="/student/replacement/new"
-            className="inline-block mt-4 bg-blue-500 px-5 py-2 rounded-xl"
+            className="inline-block bg-[#1a1a2e] hover:bg-[#252540] text-[#e8c97e] font-serif font-bold text-xs tracking-[0.1em] uppercase px-6 py-3 transition-colors no-underline self-start"
           >
-            Create your first request
+            + New Request
           </Link>
         </div>
-      ) : (
-        <div className="grid gap-5">
-          {requests.map((req) => (
-            <div
-              key={req.id}
-              className="bg-blue-900/40 border border-blue-800 rounded-2xl p-5 flex flex-col md:flex-row md:justify-between md:items-center gap-4 shadow-lg hover:shadow-xl transition"
-            >
-              <div>
-                <h3 className="text-lg font-semibold">{req.full_name}</h3>
 
-                <p className="text-blue-200 text-sm">
-                  {req.student_number} • {req.course}
-                </p>
-
-                <p className="text-xs text-blue-400 mt-1">
-                  Submitted {new Date(req.created_at).toLocaleDateString()}
-                </p>
-              </div>
-
-              <div
-                className={`px-4 py-2 rounded-full text-sm font-semibold border ${getStatusColor(
-                  req.status
-                )}`}
-              >
-                {req.status_display || req.status.toUpperCase()}
-              </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-[2px] bg-[#d4cfc3] mb-10">
+          {[
+            { label: 'Total', value: stats.total, color: 'text-[#1a1a2e]' },
+            { label: 'Approved', value: stats.approved, color: 'text-green-700' },
+            { label: 'Pending', value: stats.pending, color: 'text-[#8a7a5a]' },
+            { label: 'Rejected', value: stats.rejected, color: 'text-red-600' },
+          ].map(({ label, value, color }) => (
+            <div key={label} className="bg-[#f5f4f0] p-5">
+              <p className="text-[#9090a8] text-xs tracking-[0.1em] uppercase font-serif mb-1">
+                {label}
+              </p>
+              <p className={`text-3xl font-normal font-serif ${color}`}>{value}</p>
             </div>
           ))}
         </div>
-      )}
+
+        {loading ? (
+          <div className="text-center py-20 text-[#9090a8] font-serif text-sm tracking-widest uppercase">
+            Loading requests...
+          </div>
+        ) : requests.length === 0 ? (
+          <div className="text-center py-20 bg-white border border-[#d4cfc3]">
+            <div className="w-8 h-[2px] bg-[#e8c97e] mx-auto mb-5" />
+            <p className="text-[#9090a8] font-serif text-base mb-5">
+              You have no replacement requests yet.
+            </p>
+            <Link
+              href="/student/replacement/new"
+              className="inline-block bg-[#1a1a2e] hover:bg-[#252540] text-[#e8c97e] font-serif font-bold text-xs tracking-[0.1em] uppercase px-6 py-3 transition-colors no-underline"
+            >
+              Create your first request
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-[2px] bg-[#d4cfc3]">
+            {requests.map((req) => (
+              <div
+                key={req.id}
+                className="bg-white px-6 py-5 flex flex-col md:flex-row md:justify-between md:items-center gap-4"
+              >
+                <div>
+                  <h3 className="text-base font-bold font-serif text-[#1a1a2e] tracking-[0.02em]">
+                    {req.full_name}
+                  </h3>
+                  <p className="text-[#5a5a72] text-sm font-serif mt-0.5">
+                    {req.student_number} · {req.course}
+                  </p>
+                  <p className="text-[#9090a8] text-xs font-serif mt-1">
+                    Submitted {new Date(req.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+
+                <span
+                  className={`self-start md:self-center px-4 py-1.5 text-xs font-serif font-bold tracking-[0.08em] uppercase ${getStatusStyle(req.status)}`}
+                >
+                  {req.status_display || req.status.toUpperCase()}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
