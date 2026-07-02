@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
 
       try {
-        const res = await api.get('http://localhost:8000/admin/auth/profile/');
+        const res = await api.get('http://32.198.171.176/admin/auth/profile/');
         setUser(res.data);
       } catch (error) {
         localStorage.removeItem('accessToken');
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = async (email: string, password: string) => {
-    const res = await api.post('http://localhost:8000/auth/login/', { email, password });
+    const res = await api.post('http://32.198.171.176/auth/login/', { email, password });
     
      console.log("Correct");
 
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const register = async (data: RegisterData) => {
-    await api.post('/auth/register/', data);
+    await api.post('http://32.198.171.176/auth/register/', data);
   };
 
   const logout = () => {

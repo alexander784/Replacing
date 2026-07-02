@@ -85,7 +85,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex">
 
-      {/* LEFT PANEL */}
       <div className="hidden lg:flex w-1/2 bg-[#1a1a2e] text-white p-12 flex-col justify-between">
         <div>
           <div className="w-10 h-[3px] bg-[#e8c97e] mb-8" />
@@ -105,11 +104,9 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* RIGHT SIDE */}
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-[#f5f4f0] px-6">
         <div className="w-full max-w-md bg-white border border-[#d4cfc3] p-8 md:p-10">
 
-          {/* Header */}
           <div className="mb-8 text-center">
             <div className="w-8 h-[2px] bg-[#e8c97e] mx-auto mb-5" />
             <h2 className="text-2xl font-normal font-serif text-[#1a1a2e]">
@@ -120,17 +117,14 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* API Error */}
           {apiError && (
             <div className="border border-red-200 bg-red-50 text-red-600 px-4 py-3 text-sm font-serif mb-5">
               {apiError}
             </div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
 
-            {/* Email */}
             <div>
               <label className={labelClass}>Email Address</label>
               <input
@@ -146,7 +140,6 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Password */}
             <div>
               <label className={labelClass}>Password</label>
               <input
@@ -161,8 +154,6 @@ export default function LoginPage() {
                 <p className="text-red-500 text-xs font-serif mt-1.5">{errors.password}</p>
               )}
             </div>
-
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}
